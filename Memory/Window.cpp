@@ -8,13 +8,13 @@ Window::~Window()
 {
 	delete squares;
 }
-void Window::Draw(sf::RenderWindow &window)
+void Window::draw(sf::RenderWindow &window)
 {
-	// Clear the window
-	window.clear();
+	// Clear the window with black color
+	window.clear(sf::Color::Black);
 	// Calls on what to draw in the window
 	window.draw(*squares);
-	// Display the window
+	// End the current frame
 	window.display();
 }
 void Window::Update(float time)

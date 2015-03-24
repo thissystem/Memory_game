@@ -11,7 +11,7 @@ public:
 	Window(Squares*);
 	virtual ~Window();
 
-	void Draw(sf::RenderWindow&);
+	void draw(sf::RenderWindow&);
 	void Update(float);
 	//bool InitializeWindow(bool, int);
 
