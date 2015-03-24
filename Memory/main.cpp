@@ -1,22 +1,25 @@
-#include "Main.h"
+#include "EndScreen.h"
+#include "Squares.h"
+#include "Window.h"
+
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Green);
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	sf::RenderWindow mainWindow(sf::VideoMode(600, 600), "Main window is working");
+	Squares *squares = new Squares();//lägger till antalet brickor
+	Window *window = new Window(squares);
+	sf::Clock gameTime;
 
-	while (window.isOpen())
+	while (mainWindow.isOpen())
 	{
 		sf::Event event;
-		while (window.pollEvent(event))
+		while (mainWindow.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
-				window.close();
+				mainWindow.close();
 		}
-
-		window.clear();
-		window.draw(shape);
-		window.display();
+		window->Update(gameTime.restart().asSeconds());
+		window->Draw(mainWindow);
 	}
 
 	return 0;
