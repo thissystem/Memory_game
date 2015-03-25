@@ -6,6 +6,7 @@
 int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	sf::RenderWindow menuWindow(sf::VideoMode(150, 300), "This is the menu window");
 	sf::RenderWindow mainWindow(sf::VideoMode(600, 600), "Main window is working");
 
 	//Squares *squares = new Squares(0, 0, &texture);//lägger till antalet brickor
