@@ -33,8 +33,8 @@ Button::Button(std::string s, sf::Font& font, sf::Vector2f position, sf::Uint32 
 		m_textNormal = sf::Color(255, 255, 255);
 		m_textHover = sf::Color(255, 255, 255);
 		m_textClicked = sf::Color(255, 255, 255);
-		m_bgNormal = sf::Color(255, 0, 0, 100);
-		m_bgHover = sf::Color(200, 0, 0, 100);
+		m_bgNormal = sf::Color(0, 0, 255, 150);
+		m_bgHover = sf::Color(135, 206, 250, 150);
 		m_bgClicked = sf::Color(150, 0, 0);
 		m_border = sf::Color(255, 255, 255, 100);
 		break;
@@ -42,10 +42,10 @@ Button::Button(std::string s, sf::Font& font, sf::Vector2f position, sf::Uint32 
 	case buttonStyle::cancel:
 	{
 		m_textNormal = sf::Color(255, 255, 255);
-		m_textHover = sf::Color(255, 255, 255);
+		m_textHover = sf::Color(255, 255, 0);
 		m_textClicked = sf::Color(255, 255, 255);
-		m_bgNormal = sf::Color(255, 0, 0, 100);
-		m_bgHover = sf::Color(200, 0, 0, 100);
+		m_bgNormal = sf::Color(255, 0, 0, 150);
+		m_bgHover = sf::Color(155, 0, 0, 150);
 		m_bgClicked = sf::Color(150, 0, 0);
 		m_border = sf::Color(255, 255, 255, 100);
 		break;
@@ -53,10 +53,10 @@ Button::Button(std::string s, sf::Font& font, sf::Vector2f position, sf::Uint32 
 	case buttonStyle::clean:
 	{
 		m_textNormal = sf::Color(255, 255, 255);
-		m_textHover = sf::Color(255, 255, 255);
+		m_textHover = sf::Color(255, 255, 75);
 		m_textClicked = sf::Color(255, 255, 255);
-		m_bgNormal = sf::Color(0, 255, 255, 100);
-		m_bgHover = sf::Color(0, 200, 200, 100);
+		m_bgNormal = sf::Color(100, 100, 100, 100);
+		m_bgHover = sf::Color(100, 100, 100, 100);
 		m_bgClicked = sf::Color(0, 150, 150);
 		m_border = sf::Color(255, 255, 255, 100);
 		break;
@@ -202,7 +202,7 @@ void Button::update(sf::Event& e, sf::RenderWindow& window)
 
 	case buttonStyle::cancel:
 	{
-		m_size = sf::Vector2f(m_text.getGlobalBounds().width * 1.5f, m_text.getGlobalBounds().height * 1.75f);
+		m_size = sf::Vector2f(m_text.getGlobalBounds().width * 1.2f, m_text.getGlobalBounds().height * 1.75f);
 		m_button = sf::RectangleShape(m_size);
 		m_button.setOrigin(m_button.getGlobalBounds().width / 2, m_button.getGlobalBounds().height / 2);
 		m_button.setPosition(m_position);
@@ -218,7 +218,7 @@ void Button::update(sf::Event& e, sf::RenderWindow& window)
 
 	case buttonStyle::clean:
 	{
-		m_size = sf::Vector2f(m_text.getGlobalBounds().width * 1.5f, m_text.getGlobalBounds().height * 1.75f);
+		m_size = sf::Vector2f(m_text.getGlobalBounds().width * 4.8f, m_text.getGlobalBounds().height * 1.75f);
 		m_button = sf::RectangleShape(m_size);
 		m_button.setOrigin(m_button.getGlobalBounds().width / 2, m_button.getGlobalBounds().height / 2);
 		m_button.setPosition(m_position);
@@ -235,8 +235,13 @@ void Button::update(sf::Event& e, sf::RenderWindow& window)
 	default:
 		break;
 	}
+	mouseCheck(e, window);
+}
+void Button::mouseCheck(sf::Event& e, sf::RenderWindow& window)
+{
 
-	//perform updates for user mouse interactions
+	//					USER MOUSER INTERACTIONS
+	// m_mousePosition is the local position of the mouse ( relative to the window )
 	sf::Vector2i m_mousePosition = sf::Mouse::getPosition(window);
 
 	bool mouseInButton = m_mousePosition.x >= m_button.getPosition().x - m_button.getGlobalBounds().width / 2
@@ -359,7 +364,6 @@ void Button::draw(sf::RenderTarget& target, sf::RenderStates states)const
 	default:
 		break;
 	}
-}
 }
 void Button::setColorTextNormal(sf::Color text)
 {

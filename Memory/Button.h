@@ -5,6 +5,7 @@
 #include <SFML/Window/Mouse.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML\Graphics\Sprite.hpp>
+
 enum buttonStyle
 {
 	none = 0,
@@ -44,14 +45,7 @@ public:
 	sf::Vector2f getDimensions();
 	sf::Uint32 getState();
 	void update(sf::Event& e, sf::RenderWindow& window);
-
-	//void checkClick(sf::Vector2f);
-	//void setState(bool);
-	//void setText(std::string);
-	//bool getVar();
-	//sf::Sprite* getSprite();
-	//sf::String* getText();
-	//bool IsLeftMousePressed();// kanske är checkClick istället
+	void mouseCheck(sf::Event& e, sf::RenderWindow& window);
 
 private:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -76,10 +70,13 @@ private:
 	sf::Text m_text;
 	sf::Text m_shadow;
 
-	/*sf::Sprite normal, clicked;
-	sf::Sprite* currentSprite;
-	sf::String string;
-	bool current;*/
 };
 
 #endif
+////////////////////////////////////////
+////	Tutorial links etc			////
+////////////////////////////////////////
+/*
+http://pushbuttonreceivecode.com/blog/how-to-create-simple-buttons-for-your-sfml-game
+
+*/

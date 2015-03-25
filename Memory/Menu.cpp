@@ -8,20 +8,6 @@ Menu::~Menu()
 {
 
 }
-sf::RenderWindow Menu::InitializeMenuWindow()
-{
-	sf::RenderWindow menuWindow(sf::VideoMode(250, 300), "This is the menu window");
-	sf::Event event;
-	if (menuWindow.isOpen()) // In this if statement I want to put all my calls to my menuclass and logic about how the menu is handled
-	{
-		sf::Vector2i position(800, 400);
-		menuWindow.setPosition(position);
-		
-		menuWindow.clear(sf::Color::White);
-		menuWindow.display();
-	}
-	return menuWindow;
-}
 bool Menu::IsEscapePressed()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
